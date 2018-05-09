@@ -6,6 +6,8 @@ import "materialize-css/dist/css/materialize.min.css";
 import App from "./components/App";
 import reducers from "./reducers";
 import reduxThunk from "redux-thunk";
+import axios from "axios";
+window.axios = axios;
 
 const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
@@ -15,6 +17,3 @@ ReactDom.render(
   </Provider>,
   document.querySelector("#root")
 );
-
-console.log("stripe key is: ", process.env.REACT_APP_STRIPE_KEY);
-console.log("Environment is: ", process.env.NODE_ENV);
