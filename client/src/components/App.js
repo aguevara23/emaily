@@ -9,6 +9,7 @@ import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
 
 class App extends Component {
+  // checks to see if a user is logged in
   componentDidMount() {
     this.props.fetchUser();
   }
@@ -29,4 +30,7 @@ class App extends Component {
   }
 }
 
-export default connect(null, actions)(App);
+export default connect(
+  null,
+  actions
+)(App);

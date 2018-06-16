@@ -1,13 +1,14 @@
-// SurveyNew shows SurveyForm and SurveyFormEdit
 import React, { Component } from "react";
 import { reduxForm } from "redux-form";
 import SurveyForm from "./SurveyForm";
 import SurveyFormReview from "./SurveyFormReview";
 
+// SurveyNew conditionally renders either SurveyForm or SurveyFormEdit
 class SurveyNew extends Component {
   state = { showFormReview: false };
 
   renderContent() {
+    // if showFormReview is true, render SurveyFormReview, else render SurveyForm
     if (this.state.showFormReview) {
       return (
         <SurveyFormReview

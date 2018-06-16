@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import SurveyList from "./surveys/SurveyList";
 
+// connected to React Router. renders the SurveyList
 const dashboard = () => {
   return (
     <div>

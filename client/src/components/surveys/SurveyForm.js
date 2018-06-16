@@ -1,4 +1,3 @@
-// SurveyForm shows a form for user to add input
 import _ from "lodash";
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
@@ -7,7 +6,10 @@ import SurveyField from "./SurveyField";
 import validateEmails from "../../utils/validateEmails";
 import formFields from "./formFields";
 
+// SurveyForm shows a form for user to add input
 class SurveyForm extends Component {
+  // maps through array of formFields from a data file
+  // and renders a Field component from Redux Forms.
   renderFields() {
     return _.map(formFields, ({ label, name }) => {
       return (
@@ -39,6 +41,7 @@ class SurveyForm extends Component {
   }
 }
 
+// validates to make sure input is populated and follows correct format
 function validate(values) {
   const errors = {};
 
@@ -53,6 +56,8 @@ function validate(values) {
   return errors;
 }
 
+// uses reduxForm to handle validation and allow data to persist
+// after navigating away from the form
 export default reduxForm({
   validate,
   form: "surveyForm",

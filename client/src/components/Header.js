@@ -3,6 +3,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Payments from "./Payments";
 
+// Header renders the Navbar with different links depending on
+// whether or not user is logged in. Users can click Payments
+// component to purchase credits
 class Header extends Component {
   renderContent() {
     switch (this.props.auth) {

@@ -1,4 +1,3 @@
-// SurveyFormReview shows users their form inputs for review
 import _ from "lodash";
 import React from "react";
 import { connect } from "react-redux";
@@ -6,7 +5,9 @@ import { withRouter } from "react-router-dom";
 import formFields from "./formFields";
 import * as actions from "../../actions";
 
+// SurveyFormReview shows users their form inputs for review
 const SurveyReview = ({ onCancel, formValues, submitSurvey, history }) => {
+  // returns a div that shows label and value of each input in formFields
   const reviewFields = _.map(formFields, ({ name, label }) => {
     return (
       <div key={name}>
@@ -41,4 +42,9 @@ function mapStateToProps(state) {
   console.log(state);
   return { formValues: state.form.surveyForm.values };
 }
-export default connect(mapStateToProps, actions)(withRouter(SurveyReview));
+
+// withRouter gives SurveyReview access to history prop
+export default connect(
+  mapStateToProps,
+  actions
+)(withRouter(SurveyReview));

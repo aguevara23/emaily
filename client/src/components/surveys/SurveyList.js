@@ -2,12 +2,16 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetchSurveys } from "../../actions";
 
+// SurveyList renders a list of all user-created surveys
 class SurveyList extends Component {
+  // fetches the user-created surveys from database
   componentDidMount() {
     this.props.fetchSurveys();
   }
 
   renderSurveys() {
+    // maps through array of fetched surveys and renders a card
+    // TODO: create and use a custom card component
     return this.props.surveys.reverse().map(survey => {
       return (
         <div className="card blue-gray darken-1" key={survey._id}>
@@ -36,4 +40,7 @@ function mapStateToProps({ surveys }) {
   return { surveys };
 }
 
-export default connect(mapStateToProps, { fetchSurveys })(SurveyList);
+export default connect(
+  mapStateToProps,
+  { fetchSurveys }
+)(SurveyList);
