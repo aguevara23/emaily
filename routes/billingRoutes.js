@@ -3,6 +3,8 @@ const stripe = require("stripe")(keys.stripeSecretKey);
 const requireLogin = require("../middlewares/requireLogin");
 
 module.exports = app => {
+  // Uses the stripe api to bill a user and add credits to their account.
+  // The requireLogin middleware checks to see if user is logged in first.
   app.post("/api/stripe", requireLogin, async (req, res) => {
     const charge = await stripe.charges.create({
       amount: 500,

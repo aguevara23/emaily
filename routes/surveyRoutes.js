@@ -9,6 +9,8 @@ const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 
 module.exports = app => {
+  // Fetches json data for surveys created by logged in user.
+  // Does not include recipients list.
   app.get("/api/surveys", requireLogin, async (req, res) => {
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false
@@ -20,6 +22,7 @@ module.exports = app => {
     res.send("Thank you for your input!");
   });
 
+  // creates a webhook that listens for any unique survey responses
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
     _.chain(req.body)
@@ -54,6 +57,7 @@ module.exports = app => {
     res.send({});
   });
 
+  // responsible for submitting surveys to database
   app.post("/api/surveys", requireLogin, requireCredits, async (req, res) => {
     const { title, body, subject, recipients } = req.body;
 
@@ -69,6 +73,8 @@ module.exports = app => {
     // Great place to send an email!
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
+    // Submits and saves survey to database.
+    // Removes one credit form user and updates user.
     try {
       await mailer.send();
       await survey.save();

@@ -4,16 +4,22 @@ const passport = require("passport");
 const cookieSession = require("cookie-session");
 const bodyParser = require("body-parser");
 
+// import dev or production config keys depending on environment
 const keys = require("./config/keys");
+// import User and Survey models
 require("./models/User");
 require("./models/Survey");
+// import passport configuration
 require("./services/passport");
 
+// connect mongoose to database on mlab
 mongoose.connect(keys.mongoURI);
 
 const app = express();
 
 app.use(bodyParser.json());
+
+// setup cookie session that lasts for one month
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
@@ -21,9 +27,11 @@ app.use(
   })
 );
 
+// initialize and use passport
 app.use(passport.initialize());
 app.use(passport.session());
 
+// import code handling all http endpoints
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
