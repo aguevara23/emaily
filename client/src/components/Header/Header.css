@@ -1,0 +1,10 @@
+.Navbar {
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5%;
+}
+
+.Logo {
+  font-size: 1.5rem;
+}

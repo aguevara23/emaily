@@ -1,0 +1,26 @@
+.Landing {
+  display: flex;
+  color: white;
+}
+
+.BGImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -10;
+  filter: blur(5px);
+}
+
+.Overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -5;
+}

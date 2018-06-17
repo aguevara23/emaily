@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import Payments from "./Payments";
+import Payments from "../Payments";
 
+import styles from "./Header.css";
 // Header renders the Navbar with different links depending on
 // whether or not user is logged in. Users can click Payments
 // component to purchase credits
@@ -22,9 +23,7 @@ class Header extends Component {
           <li key="1">
             <Payments />
           </li>,
-          <li key="3" style={{ margin: "0 10px" }}>
-            Credits: {this.props.auth.credits}
-          </li>,
+          <li key="3">Credits: {this.props.auth.credits}</li>,
           <li key="2">
             <a href="/api/logout">Logout</a>
           </li>
@@ -33,17 +32,11 @@ class Header extends Component {
   }
   render() {
     return (
-      <nav>
-        <div className="nav-wrapper">
-          <Link
-            to={this.props.auth ? "/surveys" : "/"}
-            className="left brand-logo"
-            style={{ marginLeft: "30px" }}
-          >
-            Emaily
-          </Link>
-          <ul className="right">{this.renderContent()}</ul>
-        </div>
+      <nav className={styles.Navbar}>
+        <Link to={this.props.auth ? "/surveys" : "/"} className={styles.Logo}>
+          Emaily
+        </Link>
+        <ul className={styles.NavItems}>{this.renderContent()}</ul>
       </nav>
     );
   }
