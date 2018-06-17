@@ -11,15 +11,16 @@ const Landing = () => {
         alt="A worker's desk. By rawpixel on Unsplash"
       />
       <div className={styles.Overlay} />
-      <div className={styles.Left}>
-        <h1>Emaily</h1>
-        <h3>aldkfladjf</h3>
-      </div>
+      <div className={styles.Left} />
       <div className={styles.Right}>
-        <div>This will be the form</div>
-        <div>Form</div>
+        <h1 className={styles.Title}>Emaily</h1>
+        <div>Create and send customized email surveys.</div>
+        <div>Collect feedback from your recipients.</div>
+        <div>Take your product to the next level.</div>
+        <a href="/auth/google" className={styles.Login}>
+          Login with Google
+        </a>
       </div>
-      Collect feedback from users!
     </div>
   );
 };
