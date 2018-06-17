@@ -1,5 +1,7 @@
 const keys = require("../../config/keys");
 
+// Returns the survey template that is sent to email recipients.
+// TODO: customize and style this template
 module.exports = survey => {
   return `
     <html>

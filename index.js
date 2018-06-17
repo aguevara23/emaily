@@ -31,7 +31,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// import code handling all http endpoints
+// import logic handling all http endpoints
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);

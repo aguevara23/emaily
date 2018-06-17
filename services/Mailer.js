@@ -17,12 +17,16 @@ class Mailer extends helper.Mail {
     this.addRecipients();
   }
 
+  // formats the recipients into format that works well with Sendgrid
   formatAddresses(recipients) {
+    // NOTE: (({email})) is syntax for passing in a destructured object as
+    // an argument
     return recipients.map(({ email }) => {
       return new helper.Email(email);
     });
   }
 
+  // allows email to be clicked by 
   addClickTracking() {
     const trackingSettings = new helper.TrackingSettings();
     const clickTracking = new helper.ClickTracking(true, true);

@@ -1,4 +1,5 @@
 import React from "react";
+import BGImage from "../assets/rawpixel-593597-unsplash.jpg";
 
 const Landing = () => {
   return (
